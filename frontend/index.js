@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded",() =>{
     buttonC();
     buttonG();
+    buttonAll();
 })
 
 
@@ -14,7 +15,7 @@ let buttonC = function(){
         audio.play()
     }) // add event listener to button to play 
     body.appendChild(playButton)
-    console.log(body)
+    body.appendChild(audio)
 }
 
 let buttonG = function(){
@@ -27,5 +28,20 @@ let buttonG = function(){
         audio.play()
     }) // add event listener to button to play 
     body.appendChild(playButton)
-    console.log(body)
+    body.appendChild(audio)
+}
+
+let buttonAll = function(){
+    let body = document.querySelector("body")
+    let playButton = document.createElement("button")
+    let audio = document.createElement("audio") // working without adding it to dom
+    audio.setAttribute("src", "https://drive.google.com/uc?export=view&id=15-BxDTfMjt0TLs5ZfSvf7DpkExHNe0_c")
+    playButton.innerText = "All"
+    playButton.addEventListener("click", ()=> {
+        let audios = document.querySelectorAll("audio")
+        for(let audio in audios){
+            audios[audio].play() // play multiple audios
+        }
+    }) // add event listener to button to play 
+    body.appendChild(playButton)
 }
