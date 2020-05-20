@@ -8,11 +8,11 @@ let addButton = function(){
     let playButton = document.createElement("button")
     let audio = document.createElement("audio")
     audio.setAttribute("src", "https://freewavesamples.com/files/Roland-JV-2080-101-Bass-C2.wav")
-    button.innerText = "C"
-    button.addEventListener("click", ()=> {
-
+    playButton.innerText = "C"
+    playButton.addEventListener("click", ()=> {
+        audio.play()
     })
-    body.appendChild(button)
+    body.appendChild(playButton)
     console.log(body)
 }
 
