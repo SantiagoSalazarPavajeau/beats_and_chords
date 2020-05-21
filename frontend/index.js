@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded",() =>{
     buttonAll();
     pauseButton();
     synthWave();
-    // synthWaveButton();
 })
 
-
+// start organizing by classes
+// classes can build front end(adapter and objects)
 
 
 let synthWave = function(){
