@@ -35,7 +35,7 @@ let synthWave = function(){
 
 let synthWaveButton = function(json){
     console.log(json)
-    let div = document.querySelector("div")
+    let songsCard = document.getElementById("songs")
     let playButton = document.createElement("button")
     let audio0 = document.createElement("audio")
     let audio1 = document.createElement("audio")
@@ -45,7 +45,7 @@ let synthWaveButton = function(json){
     playButton.addEventListener("click", ()=> {
         playAudios([audio0, audio1])
     }) // add event listener to button to play
-    div.appendChild(playButton)
+    songsCard.appendChild(playButton)
     // div.appendChild(audio)
 }
 
