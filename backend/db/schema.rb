@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_101657) do
+ActiveRecord::Schema.define(version: 2020_05_21_140933) do
+
+  create_table "chords", force: :cascade do |t|
+    t.string "name"
+    t.string "file"
+    t.integer "song_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["song_id"], name: "index_chords_on_song_id"
+  end
 
   create_table "songs", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "chords"
   end
 
   create_table "users", force: :cascade do |t|
@@ -25,4 +33,5 @@ ActiveRecord::Schema.define(version: 2020_05_21_101657) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "chords", "songs"
 end

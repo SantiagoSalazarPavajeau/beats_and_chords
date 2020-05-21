@@ -6,4 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-synthwave = Song.create(name: "Synthwave", chords: ["https://drive.google.com/uc?export=view&id=15-BxDTfMjt0TLs5ZfSvf7DpkExHNe0_c", "https://freewavesamples.com/files/Casio-VZ-10M-Astral-C2.wav"])
+synth_wave = Song.create(name: "Synthwave")
+
+harp = Chord.create(name: "Harp", file: "https://drive.google.com/uc?export=view&id=15-BxDTfMjt0TLs5ZfSvf7DpkExHNe0_c", song: synth_wave)
+casio = Chord.create(name: "Casio", file: "https://freewavesamples.com/files/Casio-VZ-10M-Astral-C2.wav", song: synth_wave)
+# order by created at in the controller or in the model
