@@ -3,7 +3,17 @@ document.addEventListener("DOMContentLoaded",() =>{
     buttonG();
     buttonAll();
     pauseButton();
+    synthWave();
 })
+
+
+
+
+let synthWave = function(){
+    fetch("http://localhost:3000/songs/1")
+        .then(response => response.json())
+        .then(json =>console.log(json))
+}
 
 
 
