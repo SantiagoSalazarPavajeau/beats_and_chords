@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded",() =>{
     buttonAll();
     pauseButton();
     synthWave();
+    // synthWaveButton();
 })
 
 
@@ -12,7 +13,21 @@ document.addEventListener("DOMContentLoaded",() =>{
 let synthWave = function(){
     fetch("http://localhost:3000/songs/1")
         .then(response => response.json())
-        .then(json =>console.log(json))
+        .then(json =>synthWaveButton(json))// I am getting a string not an array so have to create a model in backend
+}
+// create song button with response json
+
+let synthWaveButton = function(json){
+    let body = document.querySelector("body")
+    let playButton = document.createElement("button")
+    // let audio0 = document.createElement("audio") // working without adding it to dom
+    // audio0.setAttribute("src", "") // src is first element in array
+    playButton.innerText = json.name
+    // playButton.addEventListener("click", ()=> {
+    //     audio.play()
+    // }) // add event listener to button to play
+    body.appendChild(playButton)
+    // body.appendChild(audio)
 }
 
 
@@ -100,3 +115,5 @@ let count = 1
 //      // set timer for each loop: 
 // } // improve so count is stopped after all sounds are played
 // // improve so sound is played from start of interval
+
+// beat add equivalent amount of plays to size of array
