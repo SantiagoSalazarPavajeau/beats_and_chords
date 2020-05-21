@@ -21,12 +21,14 @@ let synthWaveButton = function(json){
     console.log(json)
     let body = document.querySelector("body")
     let playButton = document.createElement("button")
-    // let audio0 = document.createElement("audio") // working without adding it to dom
-    // audio0.setAttribute("src", "") // src is first element in array
-    playButton.innerText = json.chords[0].name
-    // playButton.addEventListener("click", ()=> {
-    //     audio.play()
-    // }) // add event listener to button to play
+    let audio0 = document.createElement("audio")
+    let audio1 = document.createElement("audio")
+    audio0.setAttribute("src", json.chords[0].file) // src is first element in array
+    audio1.setAttribute("src", json.chords[1].file)
+    playButton.innerText = json.chords[0].name + json.chords[1].name
+    playButton.addEventListener("click", ()=> {
+        playAudios([audio0, audio1])
+    }) // add event listener to button to play
     body.appendChild(playButton)
     // body.appendChild(audio)
 }
