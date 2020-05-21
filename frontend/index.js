@@ -7,7 +7,23 @@ document.addEventListener("DOMContentLoaded",() =>{
 })
 
 // start organizing by classes
-// classes can build front end(adapter and objects)
+// classes can build front end(adapter and objects)?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 let synthWave = function(){
@@ -19,25 +35,25 @@ let synthWave = function(){
 
 let synthWaveButton = function(json){
     console.log(json)
-    let body = document.querySelector("body")
+    let div = document.querySelector("div")
     let playButton = document.createElement("button")
     let audio0 = document.createElement("audio")
     let audio1 = document.createElement("audio")
     audio0.setAttribute("src", json.chords[0].file) // src is first element in array
     audio1.setAttribute("src", json.chords[1].file)
-    playButton.innerText = json.chords[0].name + json.chords[1].name
+    playButton.innerText = json.name
     playButton.addEventListener("click", ()=> {
         playAudios([audio0, audio1])
     }) // add event listener to button to play
-    body.appendChild(playButton)
-    // body.appendChild(audio)
+    div.appendChild(playButton)
+    // div.appendChild(audio)
 }
 
 
 
 
 let buttonC = function(){
-    let body = document.querySelector("body")
+    let chordsCard = document.getElementById("chords")
     let playButton = document.createElement("button")
     let audio = document.createElement("audio") // working without adding it to dom
     audio.setAttribute("src", "https://freewavesamples.com/files/Casio-VZ-10M-Astral-C2.wav")
@@ -45,13 +61,13 @@ let buttonC = function(){
     playButton.addEventListener("click", ()=> {
         audio.play()
     }) // add event listener to button to play
-    body.appendChild(playButton)
-    body.appendChild(audio)
+    chordsCard.appendChild(playButton)
+    chordsCard.appendChild(audio)
 }
 
 //this function could add the audio played into an array for playing
 let buttonG = function(){
-    let body = document.querySelector("body")
+    let chordsCard = document.getElementById("chords")
     let playButton = document.createElement("button")
     let audio = document.createElement("audio") // working without adding it to dom
     audio.setAttribute("src", "https://drive.google.com/uc?export=view&id=15-BxDTfMjt0TLs5ZfSvf7DpkExHNe0_c")
@@ -59,8 +75,8 @@ let buttonG = function(){
     playButton.addEventListener("click", ()=> {
         audio.play()
     }) // add event listener to button to play 
-    body.appendChild(playButton)
-    body.appendChild(audio)
+    chordsCard.appendChild(playButton)
+    chordsCard.appendChild(audio)
 }
 
 function playAudios(audios) {
@@ -78,15 +94,15 @@ function play(audio) {
 }
 
 let buttonAll = function(){
-    let body = document.querySelector("body")
+    let trackBtns = document.getElementById("track-btns")
     let playButton = document.createElement("button")
-    playButton.innerText = "All"
+    playButton.innerText = "Play"
     playButton.addEventListener("click", ()=> {
         let audios = document.querySelectorAll("audio")
         playAudios(audios)
         
     }) // add event listener to button to play 
-    body.appendChild(playButton)
+    trackBtns.appendChild(playButton)
 }
 
 
@@ -94,7 +110,7 @@ let buttonAll = function(){
 
 
 let pauseButton = function(){
-    let body = document.querySelector("body")
+    let trackBtns = document.getElementById("track-btns")
     let pauseButton = document.createElement("button")
     pauseButton.innerText = "Stop"
     pauseButton.addEventListener("click", ()=> {
@@ -103,7 +119,7 @@ let pauseButton = function(){
        count = 1
         
     }) // add event listener to button to play 
-    body.appendChild(pauseButton)
+    trackBtns.appendChild(pauseButton)
 }
 let count = 1
 
