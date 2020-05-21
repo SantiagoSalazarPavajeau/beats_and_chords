@@ -35,19 +35,35 @@ let buttonG = function(){
     body.appendChild(audio)
 }
 
+function playAudios(audios) {
+    play(audios[0])
+      .then(function() {
+        return play(audios[1]);
+    });
+}
+
+function play(audio) {
+    audio.play();
+    return new Promise(function(resolve, reject) {
+        audio.addEventListener('ended', resolve);
+    });
+}
+
 let buttonAll = function(){
     let body = document.querySelector("body")
     let playButton = document.createElement("button")
     playButton.innerText = "All"
     playButton.addEventListener("click", ()=> {
-        // set timeout to play audios in order
         let audios = document.querySelectorAll("audio")
-        audios[0].play()
-        setInterval(playAudios, 4000, audios)
+        playAudios(audios)
         
     }) // add event listener to button to play 
     body.appendChild(playButton)
 }
+
+
+
+
 
 let pauseButton = function(){
     let body = document.querySelector("body")
@@ -64,13 +80,13 @@ let pauseButton = function(){
 let count = 1
 
 // this function could play any audios from an array in any order
-let playAudios = function(audios) {
-    if (count < audios.length){
-        audios[count].play()
-        count += 1
-    }  else{
-        clearInterval()
-    } // play multiple audios
-     // set timer for each loop: 
-} // improve so count is stopped after all sounds are played
-// improve so sound is played from start of interval
+// let playAudios = function(audios) {
+//     if (count < audios.length){
+//         audios[count].play()
+//         count += 1
+//     }  else{
+//         clearInterval()
+//     } // play multiple audios
+//      // set timer for each loop: 
+// } // improve so count is stopped after all sounds are played
+// // improve so sound is played from start of interval
