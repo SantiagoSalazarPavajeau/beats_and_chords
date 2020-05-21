@@ -2,7 +2,7 @@ class SongsController < ApplicationController
 
  def show
     song = Song.find(params[:id])
-    render json: song
+    render json: song, include: [:chords]
  end
 
 end

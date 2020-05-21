@@ -18,11 +18,12 @@ let synthWave = function(){
 // create song button with response json
 
 let synthWaveButton = function(json){
+    console.log(json)
     let body = document.querySelector("body")
     let playButton = document.createElement("button")
     // let audio0 = document.createElement("audio") // working without adding it to dom
     // audio0.setAttribute("src", "") // src is first element in array
-    playButton.innerText = json.name
+    playButton.innerText = json.chords[0].name
     // playButton.addEventListener("click", ()=> {
     //     audio.play()
     // }) // add event listener to button to play
