@@ -1,21 +1,28 @@
 document.addEventListener("DOMContentLoaded",() =>{
-    buttonC();
-    buttonG();
+    
     buttonAll();
     pauseButton();
     synthWave();
+    addChords(chordData);
 })
+
+let chordData = ["80s EP_L-01.wav ", "Tyrol Mountain_L-01.wav ", "bliss pad_L-01.wav ", "chunky house_L-01.wav ", "easy trailer_L-01.wav ", "echolette retrodub_L-01.wav ", "ghetto strings_L-01.wav ", "jazzman EP_L-01.wav ", "jb is dead_L-01.wav ", "jungle choir_L-01.wav ", "pop piano strings_L-01.wav ", "retro swing_L-01.wav ", "retro talk pad_L-01.wav ", "so very smooth_L-01.wav ", "suspense scifi_L-01.wav ", "vintage renaissance_L-01.wav ", "wurli ersatz_L-01.wav"]
 
 // start organizing by classes
 // classes can build front end(adapter and objects)?
-
+let addChords = function(chordData){
+    chordData.map((string)=> {
+        let chord = new Chord(string.substring(0, string.length - 5), `assets/chords/${string}`)
+        chord.addChordButton()
+    })
+}
 class Chord{
     constructor(name, file){
         this.name = name
         this.file = file
     }
 
-    let buttonChord = function(){ 
+    addChordButton(){ 
         let chordsCard = document.getElementById("chords")
         let playButton = document.createElement("button")
         let audio = document.createElement("audio") // working without adding it to dom
@@ -54,7 +61,6 @@ let synthWave = function(){
 // create song button with response json
 
 let synthWaveButton = function(json){
-    console.log(json)
     let songsCard = document.getElementById("songs")
     let playButton = document.createElement("button")
     let audio0 = document.createElement("audio")
