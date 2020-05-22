@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded",() =>{
 // probably use get set methods in Song class to set the chords that make up the song
 let addChords = function(chordData){
     chordData.map((string)=> {
-        let chord = new Chord(string.substring(0, string.length - 10), `assets/chords/${string}`)
+        let chord = new Chord(`${string.substring(0, string.length - 10)} `, `assets/chords/${string}`)
         chord.addChordButton()
     }) 
 }
