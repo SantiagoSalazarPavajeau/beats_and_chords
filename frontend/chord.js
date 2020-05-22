@@ -1,4 +1,4 @@
-export default class Chord{
+class Chord{
     constructor(name, file){
         this.name = name
         this.file = file
@@ -22,3 +22,4 @@ export default class Chord{
 
 
 }
+
