@@ -9,7 +9,27 @@ document.addEventListener("DOMContentLoaded",() =>{
 // start organizing by classes
 // classes can build front end(adapter and objects)?
 
+class Chord{
+    constructor(name, file){
+        this.name = name
+        this.file = file
+    }
 
+    let buttonChord = function(){
+        let chordsCard = document.getElementById("chords")
+        let playButton = document.createElement("button")
+        let audio = document.createElement("audio") // working without adding it to dom
+        audio.setAttribute("src", "") // local dir files
+        playButton.innerText = "C"
+        playButton.addEventListener("click", ()=> {
+            audio.play()
+        }) // add event listener to button to play
+        chordsCard.appendChild(playButton)
+        chordsCard.appendChild(audio)
+    }
+
+
+}
 
 
 
