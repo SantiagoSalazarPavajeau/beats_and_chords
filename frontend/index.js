@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded",() =>{
 let addChords = function(chordData){
     chordData.map((string)=> {
         let chord = new Chord(`${string.substring(0, string.length - 10)} `, `assets/chords/${string}`)
-        chord.addChordButton()
+        chord.addChordButton("chords")
     }) 
 }
 
