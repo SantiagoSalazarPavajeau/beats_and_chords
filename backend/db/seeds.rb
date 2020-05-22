@@ -8,6 +8,6 @@
 
 synth_wave = Song.create(name: "Synthwave")
 
-harp = Chord.create(name: "Harp", file: "https://drive.google.com/uc?export=view&id=15-BxDTfMjt0TLs5ZfSvf7DpkExHNe0_c", song: synth_wave)
-casio = Chord.create(name: "Casio", file: "https://freewavesamples.com/files/Casio-VZ-10M-Astral-C2.wav", song: synth_wave)
+harp = Chord.create(name: "Harp", file: "assets/chords/80s EP_L-01.wav", song: synth_wave)
+casio = Chord.create(name: "Casio", file: "assets/chords/bliss pad_L-01.wav", song: synth_wave)
 # order by created at in the controller or in the model

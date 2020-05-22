@@ -24,7 +24,7 @@ let addChords = function(chordData){
     let addElements = document.querySelectorAll("svg")
     for(let span of addElements){
         span.addEventListener("click",(e) =>{
-            let name = e.target.parentNode.parentNode.parentNode.innerText
+            let name = e.target.parentNode.parentNode.parentNode.innerText // getting bug adding text of all card
             let file = e.target.parentNode.parentNode.parentNode.innerText
             file = `${file.substring(0, file.length -1)}_L-01.wav `
             let trackChord = new Chord(name, `assets/chords/${file}`)
