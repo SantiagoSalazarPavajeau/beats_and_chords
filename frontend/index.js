@@ -1,3 +1,6 @@
+// import Chord from './chord.js'
+
+
 document.addEventListener("DOMContentLoaded",() =>{
     
     buttonAll();
@@ -10,11 +13,12 @@ let chordData = ["80s EP_L-01.wav ", "Tyrol Mountain_L-01.wav ", "bliss pad_L-01
 
 // start organizing by classes
 // classes can build front end(adapter and objects)?
+// probably use get set methods in Song class to set the chords that make up the song
 let addChords = function(chordData){
     chordData.map((string)=> {
-        let chord = new Chord(string.substring(0, string.length - 5), `assets/chords/${string}`)
+        let chord = new Chord(string.substring(0, string.length - 10), `assets/chords/${string}`)
         chord.addChordButton()
-    })
+    }) //map  over the chord data array to create a new chord from the element array and call the method to add a button per chord
 }
 class Chord{
     constructor(name, file){
@@ -24,14 +28,17 @@ class Chord{
 
     addChordButton(){ 
         let chordsCard = document.getElementById("chords")
-        let playButton = document.createElement("button")
+        let playButton = document.createElement("a")
+        //  <a href="#" class="btn btn-info">C</a>
+        playButton.className = "btn btn-info"
+        playButton.href = "#" 
         let audio = document.createElement("audio") // working without adding it to dom
         audio.setAttribute("src", this.file) // create chords from array of chords data
         playButton.innerText = this.name
         playButton.addEventListener("click", ()=> {
             audio.play()
         }) // add event listener to button to play
-        chordsCard.appendChild(playButton)
+        chordsCard.appendChild(playButton) // could add it to a list to fix spacing
         chordsCard.appendChild(audio)
     }
 
