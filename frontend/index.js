@@ -21,12 +21,13 @@ let addChords = function(chordData){
     })
     // need to add a new button to the track so have to instantiate a button inside this event listener
     // gotta find all add span tags in dom
-    let addElements = document.querySelectorAll("span")
+    let addElements = document.querySelectorAll("svg")
     for(let span of addElements){
         span.addEventListener("click",(e) =>{
-            let name = e.target.parentNode.parentElement.parentElement.innerText
-            let file = `${e.target.parentNode.parentElement.parentElement.innerText}_L-01.wav `
-            let trackChord = new Chord(name, file)
+            let name = e.target.parentNode.parentNode.parentNode.innerText
+            let file = e.target.parentNode.parentNode.parentNode.innerText
+            file = `${file.substring(0, file.length -1)}_L-01.wav `
+            let trackChord = new Chord(name, `assets/chords/${file}`)
             trackChord.addChordButton("track")
         })
     }
