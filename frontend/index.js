@@ -15,12 +15,12 @@ class Chord{
         this.file = file
     }
 
-    let buttonChord = function(){
+    let buttonChord = function(){ 
         let chordsCard = document.getElementById("chords")
         let playButton = document.createElement("button")
         let audio = document.createElement("audio") // working without adding it to dom
-        audio.setAttribute("src", "") // local dir files
-        playButton.innerText = "C"
+        audio.setAttribute("src", this.file) // create chords from array of chords data
+        playButton.innerText = this.name
         playButton.addEventListener("click", ()=> {
             audio.play()
         }) // add event listener to button to play
