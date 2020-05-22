@@ -25,12 +25,7 @@ class Chord{
             audio.play()
         }) // add event listener to button to play
 
-        add.addEventListener("click",() =>{
-            let trackCard = document.getElementById("track")
-            let trackChord = playButton
-            trackChord.className = "button btn-info"
-            trackCard.appendChild(trackChord)
-        })
+       
        
         chordsCard.appendChild(playButton) // could add it to a list to fix spacing
         // div.appendChild(playButton)
@@ -41,6 +36,7 @@ class Chord{
 
 
 }
+
 
 
 

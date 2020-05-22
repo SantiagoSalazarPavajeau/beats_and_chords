@@ -18,8 +18,20 @@ let addChords = function(chordData){
     chordData.map((string)=> {
         let chord = new Chord(`${string.substring(0, string.length - 10)} `, `assets/chords/${string}`)
         chord.addChordButton("chords")
-    }) 
-}
+    })
+    // need to add a new button to the track so have to instantiate a button inside this event listener
+    // gotta find all add span tags in dom
+    let addElements = document.querySelectorAll("span")
+    for(let span of addElements){
+        span.addEventListener("click",(e) =>{
+            let name = e.target.parentNode.parentElement.parentElement.innerText
+            let file = `${e.target.parentNode.parentElement.parentElement.innerText}_L-01.wav `
+            let trackChord = new Chord(name, file)
+            trackChord.addChordButton("track")
+        })
+    }
+    
+};
 
  //map  over the chord data array to create a 
     //new chord from the element array 
