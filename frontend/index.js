@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded",() =>{
     
     renderPlayButton();
     renderPauseButton();
+    saveSongButton();
     renderSongs();
 })
 
@@ -79,6 +80,7 @@ let renderSongs = function(){
 let songButton = function(json){
     let songsCard = document.getElementById("songs")
     let playButton = document.createElement("button")
+    playButton.className = "button btn-success"
     let audio0 = document.createElement("audio")
     let audio1 = document.createElement("audio")
     audio0.setAttribute("src", json.chords[0].file) // src is first element in array
@@ -96,8 +98,9 @@ let postObj = {
     headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
-    }
+    },
     body: {
+        // missing title: 
         chords: songAudios
     }
 }
@@ -105,6 +108,16 @@ let postObj = {
 let saveSong = () => {
     fetch("http://localhost:3000/songs", postObj)
         .then(alert("Success."))
+}
+
+let saveSongButton = function(){
+    let trackBtns = document.getElementById("track-btns")
+    let saveButton = document.createElement("button")
+    saveButton.innerText = "Save Song"
+    saveButton.addEventListener("click", ()=>{
+        saveSong()
+    })
+    trackBtns.appendChild(saveButton)
 }
 
 
