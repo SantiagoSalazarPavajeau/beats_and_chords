@@ -91,6 +91,22 @@ let songButton = function(json){
     // div.appendChild(audio)
 }
 
+let postObj = {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+    }
+    body: {
+        chords: songAudios
+    }
+}
+
+let saveSong = () => {
+    fetch("http://localhost:3000/songs", postObj)
+        .then(alert("Success."))
+}
+
 
 
 
