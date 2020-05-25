@@ -32,6 +32,7 @@ let renderPlayButton = function(){
         
     }) // add event listener to button to play 
     trackBtns.appendChild(playButton)
+
 }
 
 function playSong(audios) {
@@ -80,15 +81,15 @@ let pauseButton = function(){
     let trackBtns = document.getElementById("track-btns")
     let pauseButton = document.createElement("button")
     pauseButton.innerText = "Stop"
-    pauseButton.addEventListener("click", ()=> {
-        // set timeout to play audios in order
-       clearInterval()
-       count = 1
-        
-    }) // add event listener to button to play 
+    let allAudios = document.querySelectorAll("audio")
+    pauseButton.addEventListener("click", ()=>{
+        for(let audio of allAudios){
+            audio.pause()
+            audio.currentTime = 0
+        }
+    })
     trackBtns.appendChild(pauseButton)
 }
-let count = 1
 
 // this function could play any audios from an array in any order
 // let playAudios = function(audios) {
