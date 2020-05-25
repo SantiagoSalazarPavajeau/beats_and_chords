@@ -38,6 +38,8 @@ class Chord{
                 trackCard.appendChild(chordButtonTrack)
                 chordButtonTrack.addEventListener("click", (e)=>{
                     chordButtonTrack.parentNode.removeChild(chordButtonTrack)
+                    audio.pause()
+                    audio.currentTime = 0
                 })
             
             }) // add event listener to button to play
