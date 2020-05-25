@@ -10,7 +10,12 @@ class SongsController < ApplicationController
   params[:song][:chords].each do |file|
     song.chords.create(file: file)
   end
-  render json: song
+  render json: song, include: [:chords]
+ end
+
+ def index
+  songs = Song.all
+  render json: songs, include: [:chords]
  end
 
  private

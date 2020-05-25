@@ -71,9 +71,15 @@ function play(audio) {
 }
 
 let renderSongs = function(){
-    fetch("http://localhost:3000/songs/1")
+    fetch("http://localhost:3000/songs/")
         .then(response => response.json())
-        .then(json =>songButton(json))// I am getting a string not an array so have to create a model in backend
+        .then((json) =>{
+            for (let song of json){
+                 songButton(song)
+            }
+            debugger
+            
+        })
 }
 // create song button with response json
 
@@ -84,7 +90,6 @@ let songButton = function(json){
     let audio0 = document.createElement("audio")
     let audio1 = document.createElement("audio")
     audio0.setAttribute("src", json.chords[0].file) // src is first element in array
-    audio1.setAttribute("src", json.chords[1].file)
     playButton.innerText = json.name
     playButton.addEventListener("click", ()=> {
         playSong([audio0, audio1])
@@ -113,7 +118,7 @@ let saveSong = () => {
     }
     fetch("http://localhost:3000/songs", postObj)
         .then(response => response.json())
-        .then(json => alert(json))
+        .then(json => songButton(json))
 }
 
 let saveSongButton = function(){
