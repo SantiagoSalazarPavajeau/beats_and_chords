@@ -1,4 +1,5 @@
 let chordData = ["80s EP_L-01.wav ", "Tyrol Mountain_L-01.wav ", "bliss pad_L-01.wav ", "chunky house_L-01.wav ", "easy trailer_L-01.wav ", "echolette retrodub_L-01.wav ", "ghetto strings_L-01.wav ", "jazzman EP_L-01.wav ", "jb is dead_L-01.wav ", "jungle choir_L-01.wav ", "pop piano strings_L-01.wav ", "retro swing_L-01.wav ", "retro talk pad_L-01.wav ", "so very smooth_L-01.wav ", "suspense scifi_L-01.wav ", "vintage renaissance_L-01.wav ", "wurli ersatz_L-01.wav"]
+let songAudios = []
 
 // start organizing by classes
 // classes can build front end(adapter and objects)?
@@ -11,21 +12,12 @@ let addChords = function(chordData){
     
 };
 
-document.addEventListener("DOMContentLoaded",() =>{
-    addChords(chordData);
-
-    
-    renderPlayButton();
-    pauseButton();
-    renderSongs();
-})
-
-let songAudios = []
-
 let renderPlayButton = function(){
     let trackBtns = document.getElementById("track-btns")
     let playButton = document.createElement("button")
-    playButton.innerText = "Play"
+    playButton.innerHTML = `<svg class="bi bi-play-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                            </svg>`
     playButton.addEventListener("click", ()=> {
         //select all audios from the track card or use the song array
         playSong(songAudios)
@@ -34,6 +26,34 @@ let renderPlayButton = function(){
     trackBtns.appendChild(playButton)
 
 }
+
+let renderPauseButton = function(){
+    let trackBtns = document.getElementById("track-btns")
+    let pauseButton = document.createElement("button")
+    pauseButton.innerHTML = `<svg class="bi bi-stop-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
+                            </svg>`
+    let allAudios = document.querySelectorAll("audio")
+    pauseButton.addEventListener("click", ()=>{
+        for(let audio of allAudios){
+            audio.pause()
+            audio.currentTime = 0
+        }
+    })
+    trackBtns.appendChild(pauseButton)
+}
+
+document.addEventListener("DOMContentLoaded",() =>{
+    addChords(chordData);
+
+    
+    renderPlayButton();
+    renderPauseButton();
+    renderSongs();
+})
+
+
+
 
 function playSong(audios) {
     play(audios[0])
@@ -77,19 +97,7 @@ let songButton = function(json){
 
 
 
-let pauseButton = function(){
-    let trackBtns = document.getElementById("track-btns")
-    let pauseButton = document.createElement("button")
-    pauseButton.innerText = "Stop"
-    let allAudios = document.querySelectorAll("audio")
-    pauseButton.addEventListener("click", ()=>{
-        for(let audio of allAudios){
-            audio.pause()
-            audio.currentTime = 0
-        }
-    })
-    trackBtns.appendChild(pauseButton)
-}
+
 
 // this function could play any audios from an array in any order
 // let playAudios = function(audios) {
