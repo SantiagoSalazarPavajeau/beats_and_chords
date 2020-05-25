@@ -36,8 +36,10 @@ class Chord{
                                  </svg>`
                 chordButtonTrack.appendChild(minus)
                 trackCard.appendChild(chordButtonTrack)
-                    
+                chordButtonTrack.addEventListener("click", (e)=>{
+                    chordButtonTrack.parentNode.removeChild(chordButtonTrack)
                 })
+            
             }) // add event listener to button to play
 
             
