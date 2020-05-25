@@ -93,21 +93,26 @@ let songButton = function(json){
     // div.appendChild(audio)
 }
 
-let postObj = {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-    },
-    body: {
-        // missing title: 
-        chords: songAudios
-    }
-}
+
 
 let saveSong = () => {
+    let chordSrc = songAudios.map((audio)=> audio.src)
+    let postObj = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            song: {
+                name: "My Song",
+                chords: chordSrc
+            }
+        })
+    }
     fetch("http://localhost:3000/songs", postObj)
-        .then(alert("Success."))
+        .then(response => response.json())
+        .then(json => alert(json))
 }
 
 let saveSongButton = function(){

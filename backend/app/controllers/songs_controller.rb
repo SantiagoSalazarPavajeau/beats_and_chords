@@ -5,4 +5,17 @@ class SongsController < ApplicationController
     render json: song, include: [:chords]
  end
 
+ def create
+  song = Song.create(name: params[:song][:name])
+  params[:song][:chords].each do |file|
+    song.chords.create(file: file)
+  end
+  render json: song
+ end
+
+ private
+ def song_params
+   params.require(:song).permit(:name, :chords)
+ end
+
 end
