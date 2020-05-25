@@ -23,6 +23,7 @@ class Chord{
             audio.setAttribute("src", this.file) // create chords from array of chords data
     
             chordButton.addEventListener("click", ()=> {
+                songAudios.push(audio)
                 audio.play()
                 // add button to track card
                 let trackCard = document.getElementById("track")
@@ -43,7 +44,8 @@ class Chord{
                     audio.currentTime = 0
                     // add audio to song
                     // song could be an array
-                    
+                    songAudios = songAudios.filter(function(element){return element.src !== audio.src})
+
                 })
             
             }) // add event listener to button to play

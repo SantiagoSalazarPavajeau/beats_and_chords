@@ -20,21 +20,21 @@ document.addEventListener("DOMContentLoaded",() =>{
     renderSongs();
 })
 
-
+let songAudios = []
 
 let renderPlayButton = function(){
     let trackBtns = document.getElementById("track-btns")
     let playButton = document.createElement("button")
     playButton.innerText = "Play"
     playButton.addEventListener("click", ()=> {
-        let audios = document.querySelectorAll("audio") //select all audios from the track card or use the song array
-        playAudios(audios)
+        //select all audios from the track card or use the song array
+        playSong(songAudios)
         
     }) // add event listener to button to play 
     trackBtns.appendChild(playButton)
 }
 
-function playAudios(audios) {
+function playSong(audios) {
     play(audios[0])
       .then(function() {
         return play(audios[1]);
@@ -64,7 +64,7 @@ let songButton = function(json){
     audio1.setAttribute("src", json.chords[1].file)
     playButton.innerText = json.name
     playButton.addEventListener("click", ()=> {
-        playAudios([audio0, audio1])
+        playSong([audio0, audio1])
     }) // add event listener to button to play
     songsCard.appendChild(playButton)
     // div.appendChild(audio)
