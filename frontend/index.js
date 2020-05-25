@@ -1,5 +1,7 @@
 let chordData = ["80s EP_L-01.wav ", "Tyrol Mountain_L-01.wav ", "bliss pad_L-01.wav ", "chunky house_L-01.wav ", "easy trailer_L-01.wav ", "echolette retrodub_L-01.wav ", "ghetto strings_L-01.wav ", "jazzman EP_L-01.wav ", "jb is dead_L-01.wav ", "jungle choir_L-01.wav ", "pop piano strings_L-01.wav ", "retro swing_L-01.wav ", "retro talk pad_L-01.wav ", "so very smooth_L-01.wav ", "suspense scifi_L-01.wav ", "vintage renaissance_L-01.wav ", "wurli ersatz_L-01.wav"]
 let songAudios = []
+const beat = document.createElement("audio")
+beat.src = "assets/beats/looperman-l-2284946-0189159-80s-drums.wav"
 
 // start organizing by classes
 // classes can build front end(adapter and objects)?
@@ -18,9 +20,11 @@ let renderPlayButton = function(){
     playButton.innerHTML = `<svg class="bi bi-play-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
                             </svg>`
+    
     playButton.addEventListener("click", ()=> {
         //select all audios from the track card or use the song array
         playSong(songAudios)
+        beat.play()
         
     }) // add event listener to button to play 
     trackBtns.appendChild(playButton)
@@ -39,6 +43,7 @@ let renderPauseButton = function(){
             audio.pause()
             audio.currentTime = 0
         }
+        beat.pause()
     })
     trackBtns.appendChild(pauseButton)
 }
@@ -76,9 +81,7 @@ let renderSongs = function(){
         .then((json) =>{
             for (let song of json){
                  songButton(song)
-            }
-            debugger
-            
+            }            
         })
 }
 // create song button with response json
@@ -89,7 +92,7 @@ let songButton = function(json){
     playButton.className = "button btn-success"
     let audio0 = document.createElement("audio")
     let audio1 = document.createElement("audio")
-    audio0.setAttribute("src", json.chords[0].file) // src is first element in array
+    audio0.setAttribute("src", json.chords[0].file) // have to iterate over chords to add audios
     playButton.innerText = json.name
     playButton.addEventListener("click", ()=> {
         playSong([audio0, audio1])
@@ -101,7 +104,7 @@ let songButton = function(json){
 
 
 let saveSong = () => {
-    let chordSrc = songAudios.map((audio)=> audio.src)
+    let chordSrc = songAudios.map((audio)=> audio.src) // add chord name through id of audio
     let songName = document.getElementById("songName").value
     let postObj = {
         method: "POST",

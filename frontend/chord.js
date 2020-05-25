@@ -21,7 +21,7 @@ class Chord{
     
             let audio = document.createElement("audio") // working without adding it to dom
             audio.setAttribute("src", this.file) // create chords from array of chords data
-    
+            audio.id = this.name
             chordButton.addEventListener("click", ()=> {
                 songAudios.push(audio)
                 audio.play()
