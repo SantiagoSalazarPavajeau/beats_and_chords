@@ -97,6 +97,7 @@ let songButton = function(json){
 
 let saveSong = () => {
     let chordSrc = songAudios.map((audio)=> audio.src)
+    let songName = document.getElementById("songName").value
     let postObj = {
         method: "POST",
         headers: {
@@ -105,7 +106,7 @@ let saveSong = () => {
         },
         body: JSON.stringify({
             song: {
-                name: "My Song",
+                name: songName,
                 chords: chordSrc
             }
         })
