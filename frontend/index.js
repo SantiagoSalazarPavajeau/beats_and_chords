@@ -14,6 +14,27 @@ let addChords = function(chordData){
     
 };
 
+function playSong(songAudios) {
+    songAudios[0].play()
+    let playAudios = function(index){
+        return function(){
+            if (index < songAudios.length){
+            songAudios[index].play()
+            index += 1
+            } else{
+                let allAudios = document.querySelectorAll("audio")
+                for(let audio of allAudios){
+                    audio.pause()
+                    audio.currentTime = 0
+                }
+            }
+        }
+    }
+
+    let i = 1
+    setInterval(playAudios(i), 2500)
+}
+
 let renderPlayButton = function(){
     let trackBtns = document.getElementById("track-btns")
     let playButton = document.createElement("button")
@@ -24,7 +45,7 @@ let renderPlayButton = function(){
     playButton.addEventListener("click", ()=> {
         //select all audios from the track card or use the song array
         playSong(songAudios)
-        beat.play()
+        // beat.play()
         
     }) // add event listener to button to play 
     trackBtns.appendChild(playButton)
@@ -63,20 +84,14 @@ document.addEventListener("DOMContentLoaded",() =>{
 
 
 
-function playSong(songAudios) {
-    songAudios[0].play()
-    i = 1
-    setInterval((songAudios)=> {
-        // songAudios[i].play()
-        console.log(songAudios[i].src)
-        i++
-    }, 5000)
 
-    // play(audios[0])
-    //   .then(function() {
-    //     return play(audios[1]);
-    // });
-}
+
+
+
+
+
+
+
 
 function play(audio) {
     audio.play();
