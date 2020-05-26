@@ -54,7 +54,7 @@ function playSong(songAudios) {
     songAudios[0].play()
     let i = 0
     let playInterval = setInterval(playAudio(i), 2500)
-    let stopInterval = setInterval(stopAudio(i),2400)
+    let stopInterval = setInterval(stopAudio(i), 2400)
 }
 
 let renderPlayButton = function(){
