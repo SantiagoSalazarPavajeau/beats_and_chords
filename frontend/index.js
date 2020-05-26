@@ -15,24 +15,37 @@ let addChords = function(chordData){
 };
 
 function playSong(songAudios) {
-    songAudios[0].play()
-    let playAudios = function(index){
-        return function(){
-            if (index < songAudios.length){
-            songAudios[index].play()
-            index += 1
-            } else{
-                let allAudios = document.querySelectorAll("audio")
-                for(let audio of allAudios){
-                    audio.pause()
-                    audio.currentTime = 0
-                }
-            }
-        }
-    }
+    let playAudio = function(index){
+                        return function(){
+                            if (index < songAudios.length){
+                            songAudios[index].play()
+                            } 
+                            // else{
+                            //     break;
+                            // //     let allAudios = document.querySelectorAll("audio")
+                            // //     for(let audio of allAudios){
+                            // //         audio.pause()
+                            // //         audio.currentTime = 0
+                            // }
+                        }
+                    }
+        
+    let stopAudio = function(index){
+                        return function(){
+                            if (index < songAudios.length){
+                            songAudios[index].pause()
+                            songAudios[index].currentTime = 0
+                            index += 1
+                            } 
+                            
+                        }
+                    }
+                    
 
+    songAudios[0].play()
     let i = 1
-    setInterval(playAudios(i), 2500)
+    setInterval(playAudio(i), 2500)
+    setInterval(stopAudio(i),2400)
 }
 
 let renderPlayButton = function(){
@@ -45,7 +58,7 @@ let renderPlayButton = function(){
     playButton.addEventListener("click", ()=> {
         //select all audios from the track card or use the song array
         playSong(songAudios)
-        // beat.play()
+        beat.play()
         
     }) // add event listener to button to play 
     trackBtns.appendChild(playButton)
@@ -66,7 +79,8 @@ let renderPauseButton = function(){
         }
         beat.pause()
         beat.currentTime = 0
-        clearInterval();
+        // clearInterval();
+        // clearInterval();
     })
     trackBtns.appendChild(pauseButton)
 }
