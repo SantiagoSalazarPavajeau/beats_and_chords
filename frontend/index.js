@@ -44,6 +44,8 @@ let renderPauseButton = function(){
             audio.currentTime = 0
         }
         beat.pause()
+        beat.currentTime = 0
+        clearInterval();
     })
     trackBtns.appendChild(pauseButton)
 }
@@ -61,11 +63,19 @@ document.addEventListener("DOMContentLoaded",() =>{
 
 
 
-function playSong(audios) {
-    play(audios[0])
-      .then(function() {
-        return play(audios[1]);
-    });
+function playSong(songAudios) {
+    songAudios[0].play()
+    i = 1
+    setInterval((songAudios)=> {
+        // songAudios[i].play()
+        console.log(songAudios[i].src)
+        i++
+    }, 5000)
+
+    // play(audios[0])
+    //   .then(function() {
+    //     return play(audios[1]);
+    // });
 }
 
 function play(audio) {
