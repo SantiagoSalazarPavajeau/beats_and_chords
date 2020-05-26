@@ -15,17 +15,25 @@ let addChords = function(chordData){
 };
 
 function playSong(songAudios) {
+
     let allAudios = document.querySelectorAll("audio")
         for(let audio of allAudios){
             audio.pause()
             audio.currentTime = 0
         }
+    
     let playAudio = function(index){
                         return function(){
-                            if (index < songAudios.length){
+                            if (index < songAudios.length -1 ){
+                            index += 1
                             songAudios[index].play()
                             } else{
-
+                                clearInterval(playInterval)
+                                clearInterval(stopInterval)
+                                beat.pause()
+                                beat.currentTime = 0;
+                                console.log('playInterval')
+                                console.log('stopInterval')
                             }
                             
                         }
@@ -35,21 +43,16 @@ function playSong(songAudios) {
                         return function(){
                             if (index < songAudios.length){
                             songAudios[index].pause()
-                            songAudios[index].currentTime = 0
-                            index += 1
-                            } else{
-                                clearInterval(playInterval)
-                                clearInterval(stopInterval)
-                                console.log('playInterval')
-                                console.log('stopInterval')
-                            }
+                            songAudios[index].currentTime = 0;
+                            
+                            } 
                             
                         }
                     }
                     
 
     songAudios[0].play()
-    let i = 1
+    let i = 0
     let playInterval = setInterval(playAudio(i), 2500)
     let stopInterval = setInterval(stopAudio(i),2400)
 }
