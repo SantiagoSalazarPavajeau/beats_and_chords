@@ -1,14 +1,15 @@
-let chordData = ["80s EP_L-01.wav ", "Tyrol Mountain_L-01.wav ", "bliss pad_L-01.wav ", "chunky house_L-01.wav ", "easy trailer_L-01.wav ", "echolette retrodub_L-01.wav ", "ghetto strings_L-01.wav ", "jazzman EP_L-01.wav ", "jb is dead_L-01.wav ", "jungle choir_L-01.wav ", "pop piano strings_L-01.wav ", "retro swing_L-01.wav ", "retro talk pad_L-01.wav ", "so very smooth_L-01.wav ", "suspense scifi_L-01.wav ", "vintage renaissance_L-01.wav ", "wurli ersatz_L-01.wav"]
-let songAudios = []
+let chordData = ["Am.wav ", "C.wav ", "Em.wav ", "F.wav ", "80s EP.wav ", "Tyrol Mountain.wav ", "bliss pad.wav ", "chunky house.wav ", "easy trailer.wav ", "echolette retrodub.wav ", "ghetto strings .wav ", "jazzman EP .wav ", "jb is dead.wav ", "jungle choir .wav ", "pop piano strings .wav ", "retro swing .wav ", "retro talk pad .wav ", "so very smooth .wav ", "suspense scifi .wav ", "vintage renaissance .wav ", "wurli ersatz .wav"]
+// 
+let songAudios = [] //part of the constructor
 const beat = document.createElement("audio")
-beat.src = "assets/beats/looperman-l-2284946-0189159-80s-drums.wav"
+beat.src = "assets/beats/beat.wav"
 
 // start organizing by classes
 // classes can build front end(adapter and objects)?
 // probably use get set methods in Song class to set the chords that make up the song
 let addChords = function(chordData){
     chordData.map((string)=> {
-        let chord = new Chord(`${string.substring(0, string.length - 10)} `, `assets/chords/${string}`)
+        let chord = new Chord(`${string.substring(0, string.length - 5)} `, `assets/chords/${string}`)
         chord.addChordButton("chords")
     })
     
@@ -51,10 +52,10 @@ function playSong(songAudios) {
                     }
                     
 
-    songAudios[0].play()
+    songAudios[0].play() 
     let i = 0
-    let playInterval = setInterval(playAudio(i), 2500)
-    let stopInterval = setInterval(stopAudio(i), 2400)
+    let playInterval = setInterval(playAudio(i), 2290)
+    let stopInterval = setInterval(stopAudio(i), 2280)
 }
 
 let renderPlayButton = function(){
