@@ -1,5 +1,9 @@
 class Song{
-    constructor(chords){
-        this.chords = chords
+    constructor(name, chords){
+        this.name = document.getElementById("songName").value
+        this.chords = songAudios
     }
+
+
+
 }
