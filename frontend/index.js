@@ -15,6 +15,12 @@ let addChords = function(chordData){
     
 };
 
+let addSong = function(){
+    let song = new Song(document.getElementById("songName").value, songAudios)
+    song.saveSongButton()
+
+}
+
 function playSong(songAudios) {
 
     let allAudios = document.querySelectorAll("audio")
@@ -100,7 +106,7 @@ document.addEventListener("DOMContentLoaded",() =>{
     
     renderPlayButton();
     renderPauseButton();
-    saveSongButton();
+    addSong();
     renderSongs();
 })
 
@@ -151,36 +157,8 @@ let songButton = function(json){
 
 
 
-let saveSong = () => {
-    let chordSrc = songAudios.map((audio)=> audio.src) // add chord name through id of audio
-    let songName = document.getElementById("songName").value
-    let postObj = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify({
-            song: {
-                name: songName,
-                chords: chordSrc
-            }
-        })
-    }
-    fetch("http://localhost:3000/songs", postObj)
-        .then(response => response.json())
-        .then(json => songButton(json))
-}
 
-let saveSongButton = function(){
-    let trackBtns = document.getElementById("track-btns")
-    let saveButton = document.createElement("button")
-    saveButton.innerText = "Save Song"
-    saveButton.addEventListener("click", ()=>{
-        saveSong()
-    })
-    trackBtns.appendChild(saveButton)
-}
+
 
 
 
