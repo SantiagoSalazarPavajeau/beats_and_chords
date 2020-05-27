@@ -5,7 +5,7 @@ class Song{
     }
 
     saveSongButton(){
-        let trackBtns = document.getElementById("track-btns")
+        let trackBtns = document.getElementById("track-header")
         let saveButton = document.createElement("button")
         saveButton.innerText = "Save Song"
         saveButton.addEventListener("click", ()=>{
