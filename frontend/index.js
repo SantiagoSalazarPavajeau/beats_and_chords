@@ -1,6 +1,9 @@
 let chordData = ["Am.wav ", "C.wav ", "Em.wav ", "F.wav ", "80s EP.wav ", "Tyrol Mountain.wav ", "bliss pad.wav ", "chunky house.wav ", "easy trailer.wav ", "echolette retrodub.wav ", "ghetto strings .wav ", "jazzman EP .wav ", "jb is dead.wav ", "jungle choir .wav ", "pop piano strings .wav ", "retro swing .wav ", "retro talk pad .wav ", "so very smooth .wav ", "suspense scifi .wav ", "vintage renaissance .wav ", "wurli ersatz .wav"]
 // 
 let songAudios = [] //part of the constructor
+let songName = ()=>{
+    
+}
 const beat = document.createElement("audio")
 beat.src = "assets/beats/beat.wav"
 
@@ -16,8 +19,15 @@ let addChords = function(chordData){
 };
 
 let addSong = function(){
-    let song = new Song(document.getElementById("songName").value, songAudios)
+    let nameInput = document.getElementById("songName")
+    let song = new Song(name, songAudios)
+    nameInput.addEventListener("input", (event)=>{
+    song.name = event.target.value
+    }
+    )
+     //this is being run on load so song name is set when 
     song.saveSongButton()
+    renderSongs()
 
 }
 
@@ -102,25 +112,12 @@ let renderPauseButton = function(){
 
 document.addEventListener("DOMContentLoaded",() =>{
     addChords(chordData);
-
+    addSong();
     
     renderPlayButton();
     renderPauseButton();
-    addSong();
-    renderSongs();
+    renderSongs(); // still outside
 })
-
-
-
-
-
-
-
-
-
-
-
-
 
 function play(audio) {
     audio.play();

@@ -4,7 +4,15 @@ class Song{
         this.chords = chords
     }
 
-    
+    saveSongButton(){
+        let trackBtns = document.getElementById("track-btns")
+        let saveButton = document.createElement("button")
+        saveButton.innerText = "Save Song"
+        saveButton.addEventListener("click", ()=>{
+            this.saveSong()
+        })
+        trackBtns.appendChild(saveButton)
+    }
 
     saveSong(){
         let chordSrc = this.chords.map((audio)=> audio.src) // add chord name through id of audio
@@ -16,25 +24,17 @@ class Song{
             },
             body: JSON.stringify({
                 song: {
-                    name: this.name,
+                    name: this.name, //not saving input name
                     chords: chordSrc
                 }
             })
         }
         fetch("http://localhost:3000/songs", postObj)
             .then(response => response.json())
-            .then(json => songButton(json))
+            .then(json => songButton(json)) //outside of this scope
     }
 
-    saveSongButton(){
-        let trackBtns = document.getElementById("track-btns")
-        let saveButton = document.createElement("button")
-        saveButton.innerText = "Save Song"
-        saveButton.addEventListener("click", ()=>{
-            this.saveSong()
-        })
-        trackBtns.appendChild(saveButton)
-    }
+    
     
 
 
