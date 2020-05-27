@@ -1,9 +1,7 @@
-let chordData = ["Am.wav ", "C.wav ", "Em.wav ", "F.wav ", "80s EP.wav ", "Tyrol Mountain.wav ", "bliss pad.wav ", "chunky house.wav ", "easy trailer.wav ", "echolette retrodub.wav ", "ghetto strings .wav ", "jazzman EP .wav ", "jb is dead.wav ", "jungle choir .wav ", "pop piano strings .wav ", "retro swing .wav ", "retro talk pad .wav ", "so very smooth .wav ", "suspense scifi .wav ", "vintage renaissance .wav ", "wurli ersatz .wav"]
+let chordData = ["Am.wav ", "C.wav ", "Em.wav ", "F.wav "]
 // 
 let songAudios = [] //part of the constructor
-let songName = ()=>{
-    
-}
+
 const beat = document.createElement("audio")
 beat.src = "assets/beats/beat.wav"
 
@@ -27,8 +25,6 @@ let addSong = function(){
     )
      //this is being run on load so song name is set when 
     song.saveSongButton()
-    renderSongs()
-
 }
 
 function playSong(songAudios) {

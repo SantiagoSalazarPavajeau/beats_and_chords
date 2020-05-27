@@ -8,6 +8,8 @@
 
 synth_wave = Song.create(name: "Synthwave")
 
-harp = Chord.create(name: "Harp", file: "assets/chords/80s EP_L-01.wav", song: synth_wave)
-casio = Chord.create(name: "Casio", file: "assets/chords/bliss pad_L-01.wav", song: synth_wave)
+am = Chord.create(name: "Harp", file: "assets/chords/Am.wav ", song: synth_wave)
+c = Chord.create(name: "Casio", file: "assets/chords/C.wav ", song: synth_wave)
+em = Chord.create(name: "Casio", file: "assets/chords/Em.wav ", song: synth_wave)
+f = Chord.create(name: "Casio", file: "assets/chords/F.wav ", song: synth_wave)
 # order by created at in the controller or in the model
