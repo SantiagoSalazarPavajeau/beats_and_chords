@@ -1,12 +1,13 @@
 class Song{
     constructor(name, chords){
-        this.name = document.getElementById("songName").value
-        this.chords = songAudios
+        this.name = name
+        this.chords = chords
     }
 
+    
+
     saveSong(){
-        let chordSrc = songAudios.map((audio)=> audio.src) // add chord name through id of audio
-        let songName = document.getElementById("songName").value
+        let chordSrc = this.chords.map((audio)=> audio.src) // add chord name through id of audio
         let postObj = {
             method: "POST",
             headers: {
@@ -15,7 +16,7 @@ class Song{
             },
             body: JSON.stringify({
                 song: {
-                    name: songName,
+                    name: this.name,
                     chords: chordSrc
                 }
             })
