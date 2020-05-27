@@ -136,7 +136,7 @@ let renderSongs = function(){
 let songButton = function(json){
     let songsCard = document.getElementById("songs")
     let playButton = document.createElement("button")
-    playButton.className = "button btn-success"
+    playButton.className = "button btn-secondary"
     let audio0 = document.createElement("audio")
     let audio1 = document.createElement("audio")
     audio0.setAttribute("src", json.chords[0].file) // have to iterate over chords to add audios
