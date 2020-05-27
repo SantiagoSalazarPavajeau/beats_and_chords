@@ -26,9 +26,7 @@ let addSong = function(){
         }
     })
     nameInput.addEventListener("input", (event)=>{
-        if(nameInput.value === "**New Song Title**"){
-            event.target.value = ""
-        }
+      
     song.name = event.target.value
     }
     )
@@ -39,14 +37,16 @@ let addSong = function(){
 function playSong(songAudios) {
 
     let allAudios = document.querySelectorAll("audio")
-        for(let audio of allAudios){
-            audio.pause()
-            audio.currentTime = 0
-        }
+        
+    for(let audio of allAudios){
+        audio.pause()
+        audio.currentTime = 0
+    }
     
     let playAudio = function(index){
                         return function(){
                             if (index < songAudios.length -1 ){
+                            songAudios[index].currentTime = 0
                             index += 1
                             songAudios[index].play()
                             } else{
