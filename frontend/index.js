@@ -19,7 +19,16 @@ let addChords = function(chordData){
 let addSong = function(){
     let nameInput = document.getElementById("songName")
     let song = new Song(name, songAudios)
+
+    nameInput.addEventListener("focus", (event)=>{
+        if(nameInput.value === "**New Song Title**"){
+            event.target.value = ""
+        }
+    })
     nameInput.addEventListener("input", (event)=>{
+        if(nameInput.value === "**New Song Title**"){
+            event.target.value = ""
+        }
     song.name = event.target.value
     }
     )
