@@ -4,7 +4,7 @@ class Adapter{
     constructor(){
         this.baseURL = "http://localhost:3000"
         this.getSongs()
-        // this.saveSong()
+        // this.saveSong() //not required on load but as an event listener on the save song button
         // this.getSong()
         // this.updateSong()
         // this.deleteSong()
@@ -13,6 +13,10 @@ class Adapter{
     getSongs(){
         return fetch(`${this.baseURL}/songs`)
                     .then(resp => resp.json()) // returns json object
+    }
+
+    saveSong(){
+        return fetch()
     }
 
     

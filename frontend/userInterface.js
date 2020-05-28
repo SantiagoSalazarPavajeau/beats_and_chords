@@ -13,7 +13,13 @@ class UserInterface{
         audio0.setAttribute("src", json.chords[0].file) // have to iterate over chords to add audios
         playButton.innerText = json.name
         playButton.addEventListener("click", ()=> {
-            playSong([audio0, audio1])
+            const chords = json.chords
+            let song = []
+            for (let chord of chords){
+                song.push(chord.file)
+            }
+            console.log(song) 
+            playSong(song) // need to pass in a song object with chords attribute as audios
         }) // add event listener to button to play
         songsCard.appendChild(playButton)
         // div.appendChild(audio)

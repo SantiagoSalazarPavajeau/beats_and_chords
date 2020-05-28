@@ -16,7 +16,7 @@ let addChords = function(chordData){
     
 };
 
-let addSong = function(){
+let addSong = function(){ // new song
     let nameInput = document.getElementById("songName")
     let song = new Song(name, songAudios)
 
@@ -121,12 +121,12 @@ document.addEventListener("DOMContentLoaded",() =>{
     // renderSongs(); // still outside
 })
 
-function play(audio) {
-    audio.play();
-    return new Promise(function(resolve, reject) {
-        audio.addEventListener('ended', resolve);
-    });
-}
+// function play(audio) {
+//     audio.play();
+//     return new Promise(function(resolve, reject) {
+//         audio.addEventListener('ended', resolve);
+//     });
+// }
 
 // let renderSongs = function(){
 //     fetch("http://localhost:3000/songs/")
