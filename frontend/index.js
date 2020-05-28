@@ -25,13 +25,10 @@ let addSong = function(){
             event.target.value = ""
         }
     })
-    nameInput.addEventListener("input", (event)=>{
-      
-    song.name = event.target.value
-    }
-    )
-     //this is being run on load so song name is set when 
-    song.saveSongButton()
+    nameInput.addEventListener("input", (event)=>{ //set name property on input change
+        song.name = event.target.value
+    })
+    song.saveSongButton() // clear track data after saving and load track from song to update
 }
 
 function playSong(songAudios) {

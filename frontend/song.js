@@ -34,9 +34,4 @@ class Song{
             .then(json => songButton(json)) //outside of this scope
     }
 
-    
-    
-
-
-
 }
