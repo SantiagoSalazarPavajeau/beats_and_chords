@@ -3,6 +3,7 @@
 class App{
     constructor(){
         this.adapter = new Adapter
+        this.userInterface = new UserInterface
         this.loadSongs()
     }
 
@@ -10,8 +11,8 @@ class App{
         this.adapter.getSongs()
             .then(json => {
                 for (let song of json){
-                    songButton(song)
-               }  
+                    this.userInterface.renderSongButton(song)
+               }
             })
     }
 }
