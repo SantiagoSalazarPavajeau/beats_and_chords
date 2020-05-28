@@ -11,14 +11,12 @@ class Adapter{
     getSongs(){
         return fetch(`${this.baseURL}/songs`)
                     .then(resp => resp.json()) // returns json object
-                    .then(json => console.log(json)) //this goes on app
     }
 
     
 
 }
 
-const adapter = new Adapter
 
 // console.log(adapter.getChords())
 

@@ -1,9 +1,13 @@
 class App{
     constructor(){
-        this.getAndLoadSongs()
+        this.adapter = new Adapter
+        this.loadSongs()
     }
 
-    getAndLoadSongs(){
-        
+    loadSongs(){
+        this.adapter.getSongs()
+            .then(json => console.log(json))
     }
 }
+
+const app = new App
