@@ -9,9 +9,15 @@ class App{
 
     loadSongs(){
         this.adapter.getSongs()
-            .then(json => {
-                for (let song of json){ // create song objects with json here
-                    this.userInterface.renderSongButton(song)
+            .then((json) => {
+                const songs = []
+                json.map((song)=>{songs.push(new Song(song.name, song.chords))})
+                return songs
+            })
+            .then((songs) => {
+                console.log(songs)
+                for (let song of songs){ // create song objects with json here
+                    // this.userInterface.renderSongButton(song)
                }
             })
     }
