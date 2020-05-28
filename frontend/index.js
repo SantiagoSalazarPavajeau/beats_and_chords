@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded",() =>{
     
     renderPlayButton();
     renderPauseButton();
-    renderSongs(); // still outside
+    // renderSongs(); // still outside
 })
 
 function play(audio) {
@@ -128,17 +128,17 @@ function play(audio) {
     });
 }
 
-let renderSongs = function(){
-    fetch("http://localhost:3000/songs/")
-        .then(response => response.json())
-        .then((json) =>{
-            for (let song of json){
-                 songButton(song)
-            }            
-        })
-}
+// let renderSongs = function(){
+//     fetch("http://localhost:3000/songs/")
+//         .then(response => response.json())
+//         .then((json) =>{
+//             for (let song of json){
+//                  songButton(song)
+//             }            
+//         })
+// }
 // create song button with response json
-
+// does this go in app or in song?
 let songButton = function(json){
     let songsCard = document.getElementById("songs")
     let playButton = document.createElement("button")

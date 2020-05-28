@@ -6,7 +6,11 @@ class App{
 
     loadSongs(){
         this.adapter.getSongs()
-            .then(json => console.log(json))
+            .then(json => {
+                for (let song of json){
+                    songButton(song)
+               }  
+            })
     }
 }
 
