@@ -1,3 +1,5 @@
+// all fetch requests
+
 class Adapter{
     constructor(){
         this.baseURL = "http://localhost:3000"

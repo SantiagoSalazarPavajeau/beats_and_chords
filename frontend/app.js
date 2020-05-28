@@ -1,3 +1,5 @@
+// bridge between all modules
+
 class App{
     constructor(){
         this.adapter = new Adapter
