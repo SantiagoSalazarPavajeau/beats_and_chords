@@ -2,6 +2,7 @@ class Chord{
     constructor(name, file){
         this.name = name
         this.file = file
+        this.id
     }
 
     audio(){
