@@ -16,7 +16,10 @@ class Song{
     audios(){
         let audios = []
         for(let chord of this.chords){
-            audios.push(document.createElement("audio").src = chord)
+            let audio = document.createElement("audio")
+            audio.src = chord.file
+            audios.push(audio)
+
         }
         return audios;
     }
