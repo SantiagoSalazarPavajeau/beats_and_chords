@@ -1,8 +1,18 @@
 class Song{
     constructor(name, chords){
         this.name = name
-        this.chords = chords
+        this.chords = chords // create audios from chord with setter and getter methods
     }
+
+    get audios(){
+        let audios = []
+        for(let chord of this.chords){
+            audios.push(document.createElement("audio").src = chord)
+        }
+        return audios;
+    }
+
+
 
     saveSongButton(){
         let trackBtns = document.getElementById("track-header")
