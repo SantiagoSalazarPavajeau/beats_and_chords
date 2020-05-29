@@ -5,7 +5,8 @@ class App{
         this.adapter = new Adapter
         this.userInterface = new UserInterface
         this.loadSongs()
-        this.newSong()
+        this.loadChords()
+        // this.newSong()
     }
 
     loadSongs(){ //loads songs as complex objects from server in the form of buttons on songs card
@@ -22,6 +23,18 @@ class App{
                 }
             //    console.log(serverSongs)
             })
+    }
+
+    loadChords(){
+        let chordData = ["Am.wav ", "C.wav ", "Em.wav ", "F.wav "]
+        let chordObjs = []
+        for(let string of chordData){
+            chordObjs.push(new Chord(`${string.substring(0, string.length - 5)} `, `assets/chords/${string}`))
+        }
+        // console.log(chordObjs)
+        for(let chord of chordObjs){
+        this.userInterface.addChordButton(chord) // send chord object
+        }
     }
 
     newSong(){ // saves song created by the user
