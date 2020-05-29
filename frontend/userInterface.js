@@ -18,8 +18,8 @@ class UserInterface{
             for (let chord of chords){
                 song.push(chord.file)
             }
-            console.log(song) 
-            playSong(song) // need to pass in a song object with chords attribute as audios
+            console.log(song.audios()) 
+            playSong(song.audios()) // need to pass in a song object with chords attribute as audios
         }) // add event listener to button to play
         songsCard.appendChild(playButton)
         // div.appendChild(audio)

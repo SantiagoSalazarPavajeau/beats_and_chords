@@ -16,8 +16,11 @@ class App{
             })
             .then((songs) => {
                 console.log(songs)
+                // initialize chords from song clas
+                serverSongs = []
                 for (let song of songs){ // create song objects with json here
-                    // this.userInterface.renderSongButton(song)
+                    serverSongs.push(new Song(song.name, song.chords)) // initialize chords with file or initialize song objects??
+                    this.userInterface.renderSongButton(serverSongs)
                }
             })
     }

@@ -2,9 +2,18 @@ class Song{
     constructor(name, chords){
         this.name = name
         this.chords = chords // create audios from chord with setter and getter methods
+        this.audios()
     }
 
-    get audios(){
+    chordObjects(){
+        chordObjs = []
+        for(let chord of this.chords){
+            chordObjs.push(new Chord(chord.name, chord.file))
+        }
+        return chordObjs;
+    }
+
+    audios(){
         let audios = []
         for(let chord of this.chords){
             audios.push(document.createElement("audio").src = chord)
