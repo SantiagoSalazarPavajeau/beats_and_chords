@@ -5,18 +5,7 @@ class UserInterface{
         this.newSong = this.newSong()
     }
 
-    renderSongButton(songObj){ //better called load songs? this is specific dom manipulation/html
-        let songsCard = document.getElementById("songs")
-        let songButton = document.createElement("button")
-        songButton.className = "button btn-secondary"
-        songButton.innerText = songObj.name
-        songButton.addEventListener("click", ()=> {
-            console.log(songObj.audios())
-            playSong(songObj.audios()) // need to pass in a song object with chords attribute as audios
-            beat.play()
-        }) // add event listener to button to play song
-        songsCard.appendChild(songButton)
-    }
+    
 
     newSong(){ //catches new chords being added as well as name and returns a new song object
         let nameInput = document.getElementById("songName")
@@ -36,6 +25,30 @@ class UserInterface{
         return song;
     }
 
+    track(chord){
+        let trackCard = document.getElementById("track") //this could go in new Song method
+        let chordButtonTrack = document.createElement("button") //create these buttons from new song chords
+        chordButtonTrack.className = "button btn-info"
+        chordButtonTrack.href = "#" 
+        chordButtonTrack.innerText = chord.name
+        let minus = document.createElement("span")
+        minus.innerHTML = `<svg class="bi bi-dash-square-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2zm2 7.5a.5.5 0 000 1h8a.5.5 0 000-1H4z" clip-rule="evenodd"/>
+                          </svg>`
+
+        chordButtonTrack.appendChild(minus)
+        trackCard.appendChild(chordButtonTrack)
+        chordButtonTrack.addEventListener("click", (e)=>{
+            chordButtonTrack.parentNode.removeChild(chordButtonTrack)
+            chord.audio().pause()
+            chord.audio().currentTime = 0
+            // add audio to song
+            // song could be an array
+            this.newSong.chords = this.newSong.chords.filter(function(element){return element.src !== chord.audio().src})
+
+        })
+    }
+
 
     addChordButton(chord){ 
 
@@ -50,35 +63,11 @@ class UserInterface{
                             <path fill-rule="evenodd" d="M2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2zm6.5 4a.5.5 0 00-1 0v3.5H4a.5.5 0 000 1h3.5V12a.5.5 0 001 0V8.5H12a.5.5 0 000-1H8.5V4z" clip-rule="evenodd"/>
                          </svg>`
         let audio = chord.audio() // use chord obj method to create audio tag from file
-        // let newSong = this.newSong() //this is creating 4 songs one per button
-        // console.log(newSong)
 
         chordButton.addEventListener("click", ()=> { // add chord to new song
             this.newSong.chords.push(chord) //add chord object to song object chords attribute
-            console.log(this.newSong)
             audio.play() //play chord audio
-            // add button to track card
-            let trackCard = document.getElementById("track") //this could go in new Song method
-            let chordButtonTrack = document.createElement("button") //create these buttons from new song chords
-            chordButtonTrack.className = "button btn-info"
-            chordButtonTrack.href = "#" 
-            chordButtonTrack.innerText = chord.name
-            let minus = document.createElement("span")
-            minus.innerHTML = `<svg class="bi bi-dash-square-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2zm2 7.5a.5.5 0 000 1h8a.5.5 0 000-1H4z" clip-rule="evenodd"/>
-                             </svg>`
-
-            chordButtonTrack.appendChild(minus)
-            trackCard.appendChild(chordButtonTrack)
-            chordButtonTrack.addEventListener("click", (e)=>{
-                chordButtonTrack.parentNode.removeChild(chordButtonTrack)
-                audio.pause()
-                audio.currentTime = 0
-                // add audio to song
-                // song could be an array
-                songAudios = songAudios.filter(function(element){return element.src !== audio.src})
-
-            })
+            this.track(chord)
         
         }) // add event listener to button to play
 
@@ -92,7 +81,20 @@ class UserInterface{
         
         // add chord to song array
 
-}
+    }
+
+    renderSongButton(songObj){ //better called load songs? this is specific dom manipulation/html
+        let songsCard = document.getElementById("songs")
+        let songButton = document.createElement("button")
+        songButton.className = "button btn-secondary"
+        songButton.innerText = songObj.name
+        songButton.addEventListener("click", ()=> {
+            console.log(songObj.audios())
+            playSong(songObj.audios()) // need to pass in a song object with chords attribute as audios
+            beat.play()
+        }) // add event listener to button to play song
+        songsCard.appendChild(songButton)
+    }
 
 
 
