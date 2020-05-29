@@ -6,7 +6,7 @@ class App{
         this.userInterface = new UserInterface
         this.loadSongs()
         this.loadChords()
-        // this.newSong()
+        this.newSong()
     }
 
     loadSongs(){ //loads songs as complex objects from server in the form of buttons on songs card
@@ -38,9 +38,11 @@ class App{
     }
 
     newSong(){ // saves song created by the user
-        this.userInterface.newSong() //return the new song created by the user
-        this.userInterface.saveSongButton()
-        this.adapter.saveSong(song)
+        let song = this.userInterface.newSong
+
+        console.log(song) //return the new song created by the user
+        // this.userInterface.saveSongButton()
+        // this.adapter.saveSong(song)
     }
 
 

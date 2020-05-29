@@ -8,28 +8,28 @@ beat.src = "assets/beats/beat.wav"
 // start organizing by classes
 // classes can build front end(adapter and objects)?
 // probably use get set methods in Song class to set the chords that make up the song
-let addChords = function(chordData){
-    chordData.map((string)=> {
-        let chord = new Chord(`${string.substring(0, string.length - 5)} `, `assets/chords/${string}`)
-        chord.addChordButton("chords")
-    })
+// let addChords = function(chordData){
+//     chordData.map((string)=> {
+//         let chord = new Chord(`${string.substring(0, string.length - 5)} `, `assets/chords/${string}`)
+//         chord.addChordButton("chords")
+//     })
     
-};
+// };
 
-let addSong = function(){ // new song
-    let nameInput = document.getElementById("songName")
-    let song = new Song(name, songAudios)
+// let addSong = function(){ // new song
+//     let nameInput = document.getElementById("songName")
+//     let song = new Song(name, songAudios)
 
-    nameInput.addEventListener("focus", (event)=>{
-        if(nameInput.value === "**New Song Title**"){
-            event.target.value = ""
-        }
-    })
-    nameInput.addEventListener("input", (event)=>{ //set name property on input change
-        song.name = event.target.value
-    })
-    song.saveSongButton() // clear track data after saving and load track from song to update
-}
+//     nameInput.addEventListener("focus", (event)=>{
+//         if(nameInput.value === "**New Song Title**"){
+//             event.target.value = ""
+//         }
+//     })
+//     nameInput.addEventListener("input", (event)=>{ //set name property on input change
+//         song.name = event.target.value
+//     })
+//     song.saveSongButton() // clear track data after saving and load track from song to update
+// }
 
 function playSong(songAudios) {
 
@@ -113,8 +113,8 @@ let renderPauseButton = function(){
 }
 
 document.addEventListener("DOMContentLoaded",() =>{
-    addChords(chordData);
-    addSong();
+    // addChords(chordData);
+    // addSong();
     
     renderPlayButton();
     renderPauseButton();
