@@ -15,8 +15,22 @@ class Adapter{
                     .then(resp => resp.json()) // returns json object
     }
 
-    saveSong(){
-        return fetch()
+    saveSong(song){ // this should be set on an event listener in userInterface
+        let postObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                song: {
+                    name: song.name, //how to obtain song data in this scope?
+                    chords: song.chords //passing a song object into the saveSong method.
+                }
+            })
+        }
+        return fetch(`${this.baseURL}/songs`, postObj)
+            .then(resp => console.log(resp.json()))
     }
 
     

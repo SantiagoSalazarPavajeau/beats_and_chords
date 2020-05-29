@@ -5,9 +5,10 @@ class App{
         this.adapter = new Adapter
         this.userInterface = new UserInterface
         this.loadSongs()
+        this.newSong()
     }
 
-    loadSongs(){
+    loadSongs(){ //loads songs as complex objects from server in the form of buttons on songs card
         this.adapter.getSongs()
             .then((json) => {
                 const songs = []
@@ -22,6 +23,14 @@ class App{
             //    console.log(serverSongs)
             })
     }
+
+    newSong(){ // saves song created by the user
+        this.userInterface.newSong() //return the new song created by the user
+        this.userInterface.saveSongButton()
+        this.adapter.saveSong(song)
+    }
+
+
 
 
 }
