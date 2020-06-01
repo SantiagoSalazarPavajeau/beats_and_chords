@@ -31,67 +31,67 @@ beat.src = "assets/beats/beat.wav"
 //     song.saveSongButton() // clear track data after saving and load track from song to update
 // }
 
-function playSong(songAudios) {
+// function playSong(songAudios) {
 
-    let allAudios = document.querySelectorAll("audio")
+//     let allAudios = document.querySelectorAll("audio")
         
-    for(let audio of allAudios){
-        audio.pause()
-        audio.currentTime = 0
-    }
+//     for(let audio of allAudios){
+//         audio.pause()
+//         audio.currentTime = 0
+//     }
     
-    let playAudio = function(index){
-                        return function(){
-                            if (index < songAudios.length -1 ){
-                            songAudios[index].currentTime = 0
-                            index += 1
-                            songAudios[index].play()
-                            } else{
-                                clearInterval(playInterval)
-                                clearInterval(stopInterval)
-                                beat.pause()
-                                beat.currentTime = 0;
-                                console.log('playInterval')
-                                console.log('stopInterval')
-                            }
+//     let playAudio = function(index){
+//                         return function(){
+//                             if (index < songAudios.length -1 ){
+//                             songAudios[index].currentTime = 0
+//                             index += 1
+//                             songAudios[index].play()
+//                             } else{
+//                                 clearInterval(playInterval)
+//                                 clearInterval(stopInterval)
+//                                 beat.pause()
+//                                 beat.currentTime = 0;
+//                                 console.log('playInterval')
+//                                 console.log('stopInterval')
+//                             }
                             
-                        }
-                    }
+//                         }
+//                     }
         
-    let stopAudio = function(index){
-                        return function(){
-                            if (index < songAudios.length){
-                            songAudios[index].pause()
-                            songAudios[index].currentTime = 0;
+//     let stopAudio = function(index){
+//                         return function(){
+//                             if (index < songAudios.length){
+//                             songAudios[index].pause()
+//                             songAudios[index].currentTime = 0;
                             
-                            } 
+//                             } 
                             
-                        }
-                    }
+//                         }
+//                     }
                     
 
-    songAudios[0].play() 
-    let i = 0
-    let playInterval = setInterval(playAudio(i), 2290)
-    let stopInterval = setInterval(stopAudio(i), 2280)
-}
+//     songAudios[0].play() 
+//     let i = 0
+//     let playInterval = setInterval(playAudio(i), 2290)
+//     let stopInterval = setInterval(stopAudio(i), 2280)
+// }
 
-let renderPlayButton = function(){
-    let trackBtns = document.getElementById("track-btns")
-    let playButton = document.createElement("button")
-    playButton.innerHTML = `<svg class="bi bi-play-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
-                            </svg>`
+// let renderPlayButton = function(){
+//     let trackBtns = document.getElementById("track-btns")
+//     let playButton = document.createElement("button")
+//     playButton.innerHTML = `<svg class="bi bi-play-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+//                                 <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+//                             </svg>`
     
-    playButton.addEventListener("click", ()=> {
-        //select all audios from the track card or use the song array
-        playSong(songAudios)
-        beat.play()
+//     playButton.addEventListener("click", ()=> {
+//         //select all audios from the track card or use the song array
+//         playSong(songAudios)
+//         beat.play()
         
-    }) // add event listener to button to play 
-    trackBtns.appendChild(playButton)
+//     }) // add event listener to button to play 
+//     trackBtns.appendChild(playButton)
 
-}
+// }
 
 let renderPauseButton = function(){
     let trackBtns = document.getElementById("track-btns")
@@ -116,8 +116,8 @@ document.addEventListener("DOMContentLoaded",() =>{
     // addChords(chordData);
     // addSong();
     
-    renderPlayButton();
-    renderPauseButton();
+    // renderPlayButton();
+    // renderPauseButton();
     // renderSongs(); // still outside
 })
 
