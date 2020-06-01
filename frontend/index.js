@@ -2,8 +2,7 @@
 // 
 // let songAudios = [] //part of the constructor
 
-const beat = document.createElement("audio")
-beat.src = "assets/beats/beat.wav"
+
 
 // start organizing by classes
 // classes can build front end(adapter and objects)?
@@ -93,24 +92,24 @@ beat.src = "assets/beats/beat.wav"
 
 // }
 
-let renderPauseButton = function(){
-    let trackBtns = document.getElementById("track-btns")
-    let pauseButton = document.createElement("button")
-    pauseButton.innerHTML = `<svg class="bi bi-stop-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
-                            </svg>`
-    let allAudios = document.querySelectorAll("audio")
-    pauseButton.addEventListener("click", ()=>{
-        for(let audio of allAudios){
-            audio.pause()
-            audio.currentTime = 0
-        }
-        beat.pause()
-        beat.currentTime = 0
+// let renderPauseButton = function(){
+//     let trackBtns = document.getElementById("track-btns")
+//     let pauseButton = document.createElement("button")
+//     pauseButton.innerHTML = `<svg class="bi bi-stop-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+//                                 <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
+//                             </svg>`
+//     let allAudios = document.querySelectorAll("audio")
+//     pauseButton.addEventListener("click", ()=>{
+//         for(let audio of allAudios){
+//             audio.pause()
+//             audio.currentTime = 0
+//         }
+//         beat.pause()
+//         beat.currentTime = 0
       
-    })
-    trackBtns.appendChild(pauseButton)
-}
+//     })
+//     trackBtns.appendChild(pauseButton)
+// }
 
 document.addEventListener("DOMContentLoaded",() =>{
     // addChords(chordData);

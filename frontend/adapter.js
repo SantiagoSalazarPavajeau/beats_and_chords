@@ -1,4 +1,6 @@
 // all fetch requests
+const beat = document.createElement("audio")
+beat.src = "assets/beats/Filtered drums.wav"
 
 class Adapter{
     constructor(){
@@ -8,7 +10,6 @@ class Adapter{
         this.renderPauseButton()
         this.newSong = this.newSong()
 
-        // this.userInterface = new UserInterface
         // this.getSong()
         // this.updateSong()
         // this.deleteSong()

@@ -3,7 +3,6 @@
 class App{
     constructor(){
         this.adapter = new Adapter
-        // this.userInterface = new UserInterface
         this.loadSongs()
         this.loadChords()
         this.newSong()
@@ -26,14 +25,14 @@ class App{
     }
 
     loadChords(){
-        let chordData = ["Am.wav ", "C.wav ", "Em.wav ", "F.wav "]
+        let chordData = ["A.wav ", "Ab.wav ", "Am.wav ", "Bb.wav ", "C.wav ", "Dm.wav ", "Em.wav ", "F.wav ", "Gm.wav "]
         let chordObjs = []
         for(let string of chordData){
             chordObjs.push(new Chord(`${string.substring(0, string.length - 5)} `, `assets/chords/${string}`))
         }
         // console.log(chordObjs)
         for(let chord of chordObjs){
-        this.adapter.addChordButton(chord) // send chord object
+            this.adapter.addChordButton(chord) // send chord object
         }
     }
 
