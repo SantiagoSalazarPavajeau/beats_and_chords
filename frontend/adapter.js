@@ -1,6 +1,6 @@
 // all fetch requests
 const beat = document.createElement("audio")
-beat.src = "assets/beats/Filtered drums.wav"
+beat.src = "assets/beats/DQ.wav"
 
 class Adapter{
     constructor(){
@@ -190,8 +190,8 @@ class Adapter{
     
         songAudios[0].play() 
         let i = 0
-        let playInterval = setInterval(playAudio(i), 2290)
-        let stopInterval = setInterval(stopAudio(i), 2280)
+        let playInterval = setInterval(playAudio(i), 2000)
+        let stopInterval = setInterval(stopAudio(i), 1700)
     }
 
     getSongs(){
