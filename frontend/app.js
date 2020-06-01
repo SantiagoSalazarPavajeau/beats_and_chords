@@ -5,16 +5,10 @@ class App{
         this.adapter = new Adapter
         this.loadSongs()
         this.loadChords()
-        this.newSong()
     }
 
     loadSongs(){ //loads songs as complex objects from server in the form of buttons on songs card
         this.adapter.getSongs()
-            // .then((json) => {
-            //     const songs = []
-            //     json.map((song)=>{songs.push(new Song(song.name, song.chords))}) // i could move this to render song button method
-            //     return songs
-            // })
             .then((songs) => {
                 // render song takes in a song object
                 for(let song of songs){
@@ -34,13 +28,6 @@ class App{
         for(let chord of chordObjs){
             this.adapter.addChordButton(chord) // send chord object
         }
-    }
-
-    newSong(){ // saves song created by the user
-        this.adapter.saveSongButton()
-         //return the new song created by the user
-        // this.userInterface.saveSongButton()
-        // this.adapter.saveSong(song)
     }
 
 

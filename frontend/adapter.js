@@ -9,6 +9,7 @@ class Adapter{
         this.renderPlayButton()
         this.renderPauseButton()
         this.newSong = this.newSong()
+        this.saveSongButton()
 
         // this.getSong()
         // this.updateSong()
@@ -248,11 +249,3 @@ class Adapter{
 }
 
 
-// console.log(adapter.getChords())
-
-// this.getChords()
-// getChords(){
-//     return fetch(`${this.baseURL}chords`)
-//     .then(response => response.json())
-//     .then(json=> console.log(json))
-// }
