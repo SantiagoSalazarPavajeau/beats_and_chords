@@ -2,7 +2,7 @@ class Song{
     constructor(name, chordsJSON){
         this.name = name
         this.chords = chordsJSON // create audios from chord with setter and getter methods
-        this.audios()
+        this.files = this.files()
     }
 
     chordObjects(){
@@ -11,6 +11,14 @@ class Song{
             chordObjs.push(new Chord(chord.name, chord.file))
         }
         return chordObjs;
+    }
+
+    files(){
+        let files = []
+        for(let chord of this.chords){
+            files.push(chord.file)
+        }
+        return files;
     }
 
     audios(){

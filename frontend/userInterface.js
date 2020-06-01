@@ -60,7 +60,7 @@ class UserInterface{
                 // add audio to song
                 // song could be an array
                 this.newSong.chords = this.newSong.chords.filter(function(songChord){return songChord.id !== trackChord.id})
-                console.log(this.newSong)
+                // console.log(this.newSong)
 
             })
         }

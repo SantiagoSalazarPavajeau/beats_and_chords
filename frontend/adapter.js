@@ -25,7 +25,7 @@ class Adapter{
             body: JSON.stringify({
                 song: {
                     name: song.name, // returns name string from input
-                    chords: song.files //returns array of chord objects // need only an array of files
+                    chords_attributes: song.chords //returns array of chord objects //need only an array of files
                 }
             })
         }

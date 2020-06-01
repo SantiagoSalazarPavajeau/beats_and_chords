@@ -6,10 +6,15 @@ class SongsController < ApplicationController
  end
 
  def create
-  song = Song.create(name: params[:song][:name])
-  params[:song][:chords].each do |file|
-    song.chords.create(file: file)
-  end
+  song = Song.new(song_params)
+  
+  # byebug
+  
+  # song.add_chords(song_params[:song][:chords])
+  # song_params[:song][:chords_attributes].each do |chord|
+  #   song.chords.create(chord)
+  # end
+
   render json: song, include: [:chords]
  end
 
@@ -20,7 +25,7 @@ class SongsController < ApplicationController
 
  private
  def song_params
-   params.require(:song).permit(:name, :chords)
+   params.require(:song).permit(:name, chords_attributes: [:name, :file])
  end
 
 end
