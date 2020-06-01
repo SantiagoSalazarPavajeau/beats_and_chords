@@ -4,6 +4,7 @@ class Adapter{
     constructor(){
         this.baseURL = "http://localhost:3000"
         this.getSongs()
+        // this.userInterface = new UserInterface
         // this.getSong()
         // this.updateSong()
         // this.deleteSong()
@@ -31,8 +32,21 @@ class Adapter{
         }
         return fetch(`${this.baseURL}/songs`, postObj)
             .then(resp => resp.json())
-            .then(json=> console.log(json))
+            .then(json=> this.renderSongButton(json))
             .catch(error => alert(error))
+    }
+
+    renderSongButton(songObj){ //better called load songs? this is specific dom manipulation/html
+        let songsCard = document.getElementById("songs")
+        let songButton = document.createElement("button")
+        songButton.className = "button btn-secondary"
+        songButton.innerText = songObj.name
+        songButton.addEventListener("click", ()=> {
+            // console.log(songObj.audios())
+            playSong(songObj.audios()) // need to pass in a song object with chords attribute as audios
+            beat.play()
+        }) // add event listener to button to play song
+        songsCard.appendChild(songButton)
     }
 
     
