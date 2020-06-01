@@ -6,7 +6,7 @@ class SongsController < ApplicationController
  end
 
  def create
-  song = Song.new(song_params)
+  song = Song.create(song_params)
   
   # byebug
   
@@ -25,7 +25,7 @@ class SongsController < ApplicationController
 
  private
  def song_params
-   params.require(:song).permit(:name, chords_attributes: [:name, :file])
+   params.require(:song).permit(:name, chords_attributes: [:name, :file, :edit_id])
  end
 
 end

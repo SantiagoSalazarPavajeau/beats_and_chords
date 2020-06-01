@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_140933) do
+ActiveRecord::Schema.define(version: 2020_06_01_103432) do
 
   create_table "chords", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_05_21_140933) do
     t.integer "song_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "edit_id"
     t.index ["song_id"], name: "index_chords_on_song_id"
   end
 

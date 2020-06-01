@@ -82,7 +82,7 @@ class UserInterface{
         let audio = chord.audio() // use chord obj method to create audio tag from file
         chordButton.addEventListener("click", ()=> { // add chord to new song
             let trackChord = new Chord(chord.name, chord.file)
-            trackChord.id = Math.floor(Math.random() * Math.random() * 1000)
+            trackChord.edit_id = Math.floor(Math.random() * Math.random() * 1000)
             this.newSong.chords.push(trackChord) //add chord object to song object chords attribute
             audio.play() //play chord audio
             this.track()
