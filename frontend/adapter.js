@@ -4,7 +4,6 @@ class Adapter{
     constructor(){
         this.baseURL = "http://localhost:3000"
         this.getSongs()
-        // this.saveSong() //not required on load but as an event listener on the save song button
         // this.getSong()
         // this.updateSong()
         // this.deleteSong()
@@ -13,6 +12,7 @@ class Adapter{
     getSongs(){
         return fetch(`${this.baseURL}/songs`)
                     .then(resp => resp.json()) // returns json object
+                    .catch(error => alert(error))
     }
 
     saveSong(song){ // this should be set on an event listener in userInterface
@@ -24,13 +24,15 @@ class Adapter{
             },
             body: JSON.stringify({
                 song: {
-                    name: song.name, //how to obtain song data in this scope?
-                    chords: song.chords //passing a song object into the saveSong method.
+                    name: song.name, // returns name string from input
+                    chords: song.files //returns array of chord objects // need only an array of files
                 }
             })
         }
         return fetch(`${this.baseURL}/songs`, postObj)
-            .then(resp => console.log(resp.json()))
+            .then(resp => resp.json())
+            .then(json=> console.log(json))
+            .catch(error => alert(error))
     }
 
     

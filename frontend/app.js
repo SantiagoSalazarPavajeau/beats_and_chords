@@ -38,8 +38,7 @@ class App{
     }
 
     newSong(){ // saves song created by the user
-        let song = this.userInterface.newSong
-
+        this.userInterface.saveSongButton()
          //return the new song created by the user
         // this.userInterface.saveSongButton()
         // this.adapter.saveSong(song)

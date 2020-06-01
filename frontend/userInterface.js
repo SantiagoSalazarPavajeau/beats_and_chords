@@ -2,7 +2,18 @@
 
 class UserInterface{
     constructor(){
+        this.adapter = new Adapter
         this.newSong = this.newSong()
+    }
+
+    saveSongButton(){
+        let trackBtns = document.getElementById("track-header")
+        let saveButton = document.createElement("button")
+        saveButton.innerText = "Save Song"
+        saveButton.addEventListener("click", ()=>{
+            this.adapter.saveSong(this.newSong)
+        })
+        trackBtns.appendChild(saveButton)
     }
 
     
@@ -75,7 +86,7 @@ class UserInterface{
             this.newSong.chords.push(trackChord) //add chord object to song object chords attribute
             audio.play() //play chord audio
             this.track()
-            console.log(this.newSong)
+            // console.log(this.newSong)
         
         }) // add event listener to button to play
 
@@ -97,7 +108,7 @@ class UserInterface{
         songButton.className = "button btn-secondary"
         songButton.innerText = songObj.name
         songButton.addEventListener("click", ()=> {
-            console.log(songObj.audios())
+            // console.log(songObj.audios())
             playSong(songObj.audios()) // need to pass in a song object with chords attribute as audios
             beat.play()
         }) // add event listener to button to play song

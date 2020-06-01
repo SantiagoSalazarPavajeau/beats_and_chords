@@ -1,6 +1,6 @@
-let chordData = ["Am.wav ", "C.wav ", "Em.wav ", "F.wav "]
+// let chordData = ["Am.wav ", "C.wav ", "Em.wav ", "F.wav "]
 // 
-let songAudios = [] //part of the constructor
+// let songAudios = [] //part of the constructor
 
 const beat = document.createElement("audio")
 beat.src = "assets/beats/beat.wav"
