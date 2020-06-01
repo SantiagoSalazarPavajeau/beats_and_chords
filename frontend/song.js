@@ -3,6 +3,14 @@ class Song{
         this.name = name
         this.chords = chordsJSON // create audios from chord with setter and getter methods
         this.files = this.files()
+        this.beat = this.beat()
+        this.audios = this.audios()
+    }
+
+    beat(){
+        const beat = document.createElement("audio")
+        beat.src = "assets/beats/DQ.wav"
+        return beat;
     }
 
     chordObjects(){
@@ -27,13 +35,8 @@ class Song{
             let audio = document.createElement("audio")
             audio.src = chord.file
             audios.push(audio)
-
         }
         return audios;
-    }
-
-
-
-    
+    } 
 
 }

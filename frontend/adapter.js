@@ -1,6 +1,5 @@
 // all fetch requests
-const beat = document.createElement("audio")
-beat.src = "assets/beats/DQ.wav"
+
 
 class Adapter{
     constructor(){
@@ -10,11 +9,13 @@ class Adapter{
         this.renderPauseButton()
         this.newSong = this.newSong()
         this.saveSongButton()
+        
 
         // this.getSong()
         // this.updateSong()
         // this.deleteSong()
     }
+    
 
     renderSongButton(songObj){ //better called load songs? this is specific dom manipulation/html
         let songsCard = document.getElementById("songs")
@@ -24,7 +25,7 @@ class Adapter{
         songButton.addEventListener("click", ()=> {
             // console.log(songObj.audios())
             playSong(songObj.audios()) // need to pass in a song object with chords attribute as audios
-            beat.play()
+            songObj.beat.play()
         }) // add event listener to button to play song
         songsCard.appendChild(songButton)
     }
@@ -46,6 +47,7 @@ class Adapter{
             let trackChord = new Chord(chord.name, chord.file)
             trackChord.edit_id = Math.floor(Math.random() * Math.random() * 1000)
             this.newSong.chords.push(trackChord) //add chord object to song object chords attribute
+            this.newSong.audios.push(trackChord.audio())
             audio.play() //play chord audio
             this.track()
             // console.log(this.newSong)
@@ -121,8 +123,8 @@ class Adapter{
         
         playButton.addEventListener("click", ()=> {
             //select all audios from the track card or use the song array
-            this.playSong(this.newSong.audios())
-            beat.play()
+            this.playSong(this.newSong)
+            this.newSong.beat.play()
             
         }) // add event listener to button to play 
         trackBtns.appendChild(playButton)
@@ -141,15 +143,15 @@ class Adapter{
                 audio.pause()
                 audio.currentTime = 0
             }
-            beat.pause()
-            beat.currentTime = 0
+            this.newSong.beat.pause()
+            this.newSong.beat.currentTime = 0
           
         })
         trackBtns.appendChild(pauseButton)
     }
     
 
-    playSong(songAudios) {
+    playSong(song) {
 
         let allAudios = document.querySelectorAll("audio")
             
@@ -160,15 +162,15 @@ class Adapter{
         
         let playAudio = function(index){
                             return function(){
-                                if (index < songAudios.length -1 ){
-                                songAudios[index].currentTime = 0
+                                if (index < song.audios.length -1 ){
+                                    song.audios[index].currentTime = 0
                                 index += 1
-                                songAudios[index].play()
+                                song.audios[index].play()
                                 } else{
                                     clearInterval(playInterval)
                                     clearInterval(stopInterval)
-                                    beat.pause()
-                                    beat.currentTime = 0;
+                                    song.beat.pause()
+                                    song.beat.currentTime = 0;
                                     console.log('playInterval')
                                     console.log('stopInterval')
                                 }
@@ -178,17 +180,17 @@ class Adapter{
             
         let stopAudio = function(index){
                             return function(){
-                                if (index < songAudios.length){
-                                songAudios[index].pause()
-                                songAudios[index].currentTime = 0;
+                                if (index < song.audios.length){
+                                    song.audios[index].pause()
+                                    song.audios[index].currentTime = 0;
                                 
                                 } 
                                 
                             }
                         }
                         
-    
-        songAudios[0].play() 
+        song.audios[0].play()
+        
         let i = 0
         let playInterval = setInterval(playAudio(i), 2000)
         let stopInterval = setInterval(stopAudio(i), 1700)
@@ -239,7 +241,7 @@ class Adapter{
         songButton.addEventListener("click", ()=> {
             // console.log(songObj.audios())
             this.playSong(songObj.audios()) // how to find this song?
-            beat.play()
+            this.newSong.beat.play()
         }) // add event listener to button to play song
         songsCard.appendChild(songButton)
     }
